@@ -1,14 +1,16 @@
 services:
-  postgres:
+  mongodb:
     build:
       context: db/docker
-      dockerfile: PostgreSQL.dockerfile
+      dockerfile: MongoDB.dockerfile
+    restart: always
     ports:
-      - 5432:5432
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - 27017:27017
     environment:
-      POSTGRES_PASSWORD: qSpEx2Zz8BS9
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: jNaSQNY8veUG
+    volumes:
+      - mongodb_data:/etc/mongo
 
 volumes:
-  postgres_data:
+  mongodb_data:
